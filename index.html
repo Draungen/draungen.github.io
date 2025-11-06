@@ -4,36 +4,64 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Draungen — Coming Soon</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
+  <!-- Подключаем шрифты -->
+  <link href="https://fonts.googleapis.com/css2?family=Tourney:wght@600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+  <style>
     body {
       margin: 0;
       height: 100vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      background: radial-gradient(circle at top, #1a001f, #000);
-      color: #ff66cc;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      align-items: center;
+      background: radial-gradient(circle at top, #150018, #000);
       overflow: hidden;
+      color: #ff66cc;
     }
 
     h1 {
-      font-size: 3rem;
-      text-shadow: 0 0 15px #ff66cc, 0 0 30px #a855f7;
-      animation: pulse 2.5s infinite ease-in-out;
+      font-family: 'Tourney', sans-serif;
+      font-size: 4rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #ff4fd8;
+      text-shadow: 0 0 15px #ff4fd8, 0 0 40px #a855f7;
+      animation: glow 3s ease-in-out infinite;
+      margin: 0;
     }
 
-    @keyframes pulse {
-      0%, 100% { text-shadow: 0 0 15px #ff66cc, 0 0 30px #a855f7; }
-      50% { text-shadow: 0 0 35px #ff99ff, 0 0 70px #c084fc; }
+    footer {
+      position: absolute;
+      bottom: 25px;
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      color: #b380ff;
+      opacity: 0.85;
+      letter-spacing: 1px;
+      animation: fadeIn 2s ease-out forwards;
+    }
+
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 15px #ff4fd8, 0 0 40px #a855f7; }
+      50% { text-shadow: 0 0 35px #ff99ff, 0 0 80px #c084fc; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 0.85; transform: translateY(0); }
     }
   </style>
 </head>
+
 <body>
   <h1>Coming Soon</h1>
+
+  <footer>
+    Draungen — Official Web Presence<br>
+    © 2025 Draungen. All rights reserved.
+  </footer>
 </body>
 </html>
