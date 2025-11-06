@@ -2,16 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Draungen — Coming Soon</title>
 
   <!-- Подключаем шрифты -->
   <link href="https://fonts.googleapis.com/css2?family=Tourney:wght@600&family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -19,29 +23,35 @@
       background: radial-gradient(circle at top, #150018, #000);
       overflow: hidden;
       color: #ff66cc;
+      text-align: center;
+      padding: 0 10px; /* немного отступа по бокам */
     }
 
     h1 {
       font-family: 'Tourney', sans-serif;
-      font-size: 4rem;
+      font-size: clamp(2.2rem, 10vw, 4rem); /* масштабируется */
       letter-spacing: 4px;
       text-transform: uppercase;
       color: #ff4fd8;
       text-shadow: 0 0 15px #ff4fd8, 0 0 40px #a855f7;
       animation: glow 3s ease-in-out infinite;
       margin: 0;
+      word-break: break-word;
     }
 
     footer {
       position: absolute;
-      bottom: 25px;
+      bottom: 20px;
+      width: 100%;
       text-align: center;
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.9rem;
+      font-size: clamp(0.7rem, 2.5vw, 0.9rem);
       color: #b380ff;
       opacity: 0.85;
       letter-spacing: 1px;
+      line-height: 1.6;
       animation: fadeIn 2s ease-out forwards;
+      padding: 0 10px;
     }
 
     @keyframes glow {
