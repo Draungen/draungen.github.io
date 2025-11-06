@@ -24,12 +24,12 @@
       overflow: hidden;
       color: #ff66cc;
       text-align: center;
-      padding: 0 10px; /* немного отступа по бокам */
+      padding: 0 10px;
     }
 
     h1 {
       font-family: 'Tourney', sans-serif;
-      font-size: clamp(2.2rem, 10vw, 4rem); /* масштабируется */
+      font-size: clamp(2.2rem, 10vw, 4rem);
       letter-spacing: 4px;
       text-transform: uppercase;
       color: #ff4fd8;
@@ -37,6 +37,14 @@
       animation: glow 3s ease-in-out infinite;
       margin: 0;
       word-break: break-word;
+    }
+
+    /* "Поломанная" буква */
+    .broken {
+      display: inline-block;
+      animation: flicker 3s infinite;
+      color: #ffb3f9;
+      text-shadow: 0 0 5px #ff99ff, 0 0 20px #a855f7;
     }
 
     footer {
@@ -59,6 +67,22 @@
       50% { text-shadow: 0 0 35px #ff99ff, 0 0 80px #c084fc; }
     }
 
+    /* Эффект "мигающего неона" */
+    @keyframes flicker {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 15px #ffb3f9, 0 0 30px #c084fc;
+      }
+      20%, 24%, 55% {
+        opacity: 0.2;
+        text-shadow: none;
+      }
+      56% {
+        opacity: 0.5;
+        text-shadow: 0 0 5px #ff80df;
+      }
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 0.85; transform: translateY(0); }
@@ -67,11 +91,37 @@
 </head>
 
 <body>
-  <h1>Coming Soon</h1>
+  <h1 id="title">COMING SOON</h1>
 
   <footer>
     Draungen — Official Web Presence<br>
     © 2025 Draungen. All rights reserved.
   </footer>
+
+  <script>
+    // Берём текст заголовка
+    const title = document.getElementById("title");
+    const text = title.textContent.trim();
+
+    // Очищаем и разбиваем на буквы
+    title.textContent = "";
+    const letters = text.split("");
+
+    // Добавляем каждую букву в отдельный span
+    letters.forEach(char => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      title.appendChild(span);
+    });
+
+    // Выбираем случайную букву (не пробел)
+    const validIndexes = letters
+      .map((ch, i) => (ch !== " " ? i : null))
+      .filter(i => i !== null);
+    const randomIndex = validIndexes[Math.floor(Math.random() * validIndexes.length)];
+
+    // Добавляем класс "broken" к случайной букве
+    title.children[randomIndex].classList.add("broken");
+  </script>
 </body>
 </html>
